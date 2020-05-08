@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './App.css';
 import './bootstrap.min.css';
 
@@ -81,6 +82,7 @@ function AuthorQuiz({ turnData, highlight, onAnswerSelected }) {
       {/* highlight will be passed to the highLightToBgColor() function to determine the color of the background and is given via onAnsweredSelected*/}
       <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected} />
       <Continue />
+      <p><Link to="/add">Add an Author</Link></p>
       <Footer />
     </div>
   );

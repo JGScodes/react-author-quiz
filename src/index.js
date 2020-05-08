@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import AuthorQuiz from './AuthorQuiz';
+import './index.css';
 //deconstructing the shuffle and sample functions from underscore package
 import { shuffle, sample } from 'underscore';
 import * as serviceWorker from './serviceWorker';
@@ -75,8 +76,25 @@ function onAnswerSelected(answer) {
   render();
 }
 
+function AddAuthorForm({ match }) {
+  return <div>
+    <h1>Add Author</h1>
+    <p>{JSON.stringify(match)}</p>
+  </div>
+}
+
+function App() {
+  return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />;
+}
+
 function render() {
-  ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />,
+  ReactDOM.render(
+    <BrowserRouter>
+      <React.Fragment>
+        <Route exact path="/" component={App} />
+        <Route path="/add" component={AddAuthorForm} />
+      </React.Fragment>
+    </BrowserRouter>,
     document.getElementById('root')
   );
 }
