@@ -23,6 +23,7 @@ function Book({ title, onClick }) {
 }
 
 // deconstructing author and books from the props object..I think
+// highlight will have a value that's determined by the logic of onAnswerSelected that will be either 'correct' or 'wrong'. 'none' will be default which is white
 function Turn({ author, books, highlight, onAnswerSelected }) {
   function highLightToBgColor(highlight) {
     const mapping = {
@@ -77,6 +78,7 @@ function AuthorQuiz({ turnData, highlight, onAnswerSelected }) {
   return (
     <div className="container-fluid">
       <Hero />
+      {/* highlight will be passed to the highLightToBgColor() function to determine the color of the background and is given via onAnsweredSelected*/}
       <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected} />
       <Continue />
       <Footer />

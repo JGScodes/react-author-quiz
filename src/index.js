@@ -66,7 +66,10 @@ const state = {
   highlight: 'none'
 }
 
+
+// answer is the book component being clicked on and being passed to onAnswerSelected
 function onAnswerSelected(answer) {
+  console.log(answer);
   const isCorrect = state.turnData.author.books.some((book) => book === answer);
   state.highlight = isCorrect ? 'correct' : 'wrong';
   render();
